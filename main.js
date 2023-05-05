@@ -60,7 +60,7 @@ const posts = [
 console.log(posts);
 
 
-// creo i post
+// --- creo i post ---
 const container = document.querySelector(`.posts-list`);
 
 posts.forEach((arrPost) => {
@@ -76,7 +76,7 @@ posts.forEach((arrPost) => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${arrPost.author.name}</div>
-                    <div class="post-meta__time">${arrPost.created}</div>
+                    <div class="post-meta__time">${dateFormatEu(posts[0].created)}</div>
                 </div>                    
             </div>
         </div>
@@ -108,7 +108,7 @@ posts.forEach((arrPost) => {
 
 
 
-// liked button
+// --- liked button ---
 const btnLike = document.querySelectorAll(".like-button");
 const counterLike = document.querySelectorAll(".js-likes-counter");
 // const postsHistory = [];
@@ -131,3 +131,10 @@ btnLike.forEach((like, i) => {
         }
     });
 });
+
+
+// *** BONUS ***
+// --- data inversa --- BONUS 1
+function dateFormatEu(date) {
+    return date.split('-').reverse().join('/');
+};
