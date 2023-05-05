@@ -111,24 +111,23 @@ posts.forEach((arrPost) => {
 // liked button
 const btnLike = document.querySelectorAll(".like-button");
 const counterLike = document.querySelectorAll(".js-likes-counter");
-const postsHistory = [];
+// const postsHistory = [];
 
 btnLike.forEach((like, i) => {
-    const conter = counterLike[i];
+    const counter = counterLike[i];
 
     like.addEventListener(`click`, () => {
+        like.classList.toggle("like-button--liked");
         if (like.classList.contains(`like-button--liked`)) {
-            posts[i].likes -= 1;
-            postsHistory.pop(`${posts[i].id}`);
-            console.log(postsHistory);
-        } else {
             posts[i].likes += 1;
-            postsHistory.push(`${posts[i].id}`);
-            console.log(postsHistory);
+            counter.innerHTML = `${posts[i].likes}`;
+            // postsHistory.pop(`${posts[i].id}`);
+            // console.log(postsHistory);
+        } else {
+            posts[i].likes -= 1;
+            counter.innerHTML = `${posts[i].likes}`;
+            // postsHistory.push(`${posts[i].id}`);
+            // console.log(postsHistory);
         }
     });
-
-    like.classList.toggle("like-button--liked");
-    counterLike.innerHTML = `${posts[i].likes}`;
-
 });
