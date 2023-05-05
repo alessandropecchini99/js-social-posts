@@ -106,10 +106,9 @@ posts.forEach((arrPost) => {
 
 });
 
-// --- liked button ---
+// --- liked button --- + BONUS 3
 const btnLike = document.querySelectorAll(".like-button");
 const counterLike = document.querySelectorAll(".js-likes-counter");
-// const postsHistory = [];
 
 btnLike.forEach((like, i) => {
     const counter = counterLike[i];
@@ -119,13 +118,9 @@ btnLike.forEach((like, i) => {
         if (like.classList.contains(`like-button--liked`)) {
             posts[i].likes += 1;
             counter.innerHTML = `${posts[i].likes}`;
-            // postsHistory.pop(`${posts[i].id}`);
-            // console.log(postsHistory);
         } else {
             posts[i].likes -= 1;
             counter.innerHTML = `${posts[i].likes}`;
-            // postsHistory.push(`${posts[i].id}`);
-            // console.log(postsHistory);
         }
     });
 });
