@@ -1,3 +1,4 @@
+// imposto array
 const posts = [
     {
         "id": 1,
@@ -59,9 +60,10 @@ const posts = [
 console.log(posts);
 
 
+// creo i post
 const container = document.querySelector(`.posts-list`);
 
-for (let post of posts) {
+posts.forEach((arrPost) => {
 
     container.innerHTML += 
     ` <div class="post">
@@ -70,36 +72,63 @@ for (let post of posts) {
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${post.author.image}" alt="${post.author.name}">                    
+                    <img class="profile-pic" src="${arrPost.author.image}" alt="${arrPost.author.name}">                    
                 </div>
                 <div class="post-meta__data">
-                    <div class="post-meta__author">${post.author.name}</div>
-                    <div class="post-meta__time">${post.created}</div>
+                    <div class="post-meta__author">${arrPost.author.name}</div>
+                    <div class="post-meta__time">${arrPost.created}</div>
                 </div>                    
             </div>
         </div>
 
         <!-- MAIN -->
-        <div class="post__text">${post.content}</div>
+        <div class="post__text">${arrPost.content}</div>
         <div class="post__image">
-            <img src="${post.media}" alt="">
+            <img src="${arrPost.media}" alt="">
         </div>
 
         <!-- FOOTER -->
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" data-postid="${arrPost.id}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-${post.id}" class="js-likes-counter">${post.likes}</b> persone
+                    Piace a <b id="like-counter-${arrPost.id}" class="js-likes-counter">${arrPost.likes}</b> persone
                 </div>
             </div> 
         </div>      
 
     </div>`
 
-}
+});
+
+
+
+// liked button
+const btnLike = document.querySelectorAll(".like-button");
+const counterLike = document.querySelectorAll(".js-likes-counter");
+const postsHistory = [];
+
+btnLike.forEach((like, i) => {
+    const conter = counterLike[i];
+
+    like.addEventListener(`click`, () => {
+        if (like.classList.contains(`like-button--liked`)) {
+            posts[i].likes -= 1;
+            postsHistory.pop(`${posts[i].id}`);
+            console.log(postsHistory);
+        } else {
+            posts[i].likes += 1;
+            postsHistory.push(`${posts[i].id}`);
+            console.log(postsHistory);
+        }
+    });
+
+    like.classList.toggle("like-button--liked");
+    counterLike.innerHTML = `${posts[i].likes}`;
+
+});
