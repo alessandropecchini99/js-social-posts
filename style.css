@@ -68,12 +68,12 @@ h1 {
 }
 
 .profile-pic-letter {
-    border-radius: 50%;
     background-color: #023047;
     color: white;
+    font-size: 1.6em;
+    border-radius: 50%;
     width: 60px;
     aspect-ratio: 1 / 1;
-    font-size: 1.6em;
     display: flex;
     align-items: center;
     justify-content: center;
