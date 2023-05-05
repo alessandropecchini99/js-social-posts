@@ -72,11 +72,11 @@ posts.forEach((arrPost) => {
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${arrPost.author.image}" alt="${arrPost.author.name}">                    
+                    ${checkProPic(arrPost.author.image) ? iniziali(arrPost.author.name) : `<img class="profile-pic" src="${arrPost.author.image}" alt="${arrPost.author.name}">`}     
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${arrPost.author.name}</div>
-                    <div class="post-meta__time">${dateFormatEu(posts[0].created)}</div>
+                    <div class="post-meta__time">${dateFormatEu(arrPost.created)}</div>
                 </div>                    
             </div>
         </div>
@@ -106,8 +106,6 @@ posts.forEach((arrPost) => {
 
 });
 
-
-
 // --- liked button ---
 const btnLike = document.querySelectorAll(".like-button");
 const counterLike = document.querySelectorAll(".js-likes-counter");
@@ -133,8 +131,25 @@ btnLike.forEach((like, i) => {
 });
 
 
+
 // *** BONUS ***
 // --- data inversa --- BONUS 1
 function dateFormatEu(date) {
     return date.split('-').reverse().join('/');
+};
+
+// --- iniziali --- BONUS 2
+function checkProPic(proPic) {
+    const profilePic = proPic;
+    if (profilePic == null) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function iniziali(name) {
+    const Name = name.split(` `);
+    const firstLetter = Name.map(Name => Name.charAt(0));
+    return firstLetter.join('')
 };
