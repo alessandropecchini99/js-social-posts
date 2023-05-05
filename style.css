@@ -67,6 +67,13 @@ h1 {
     max-width: 60px;
 }
 
+.profile-pic-letter {
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    padding: 5px 6px;
+}
+
 .profile-pic-default {
     display: flex;
     justify-content: center;

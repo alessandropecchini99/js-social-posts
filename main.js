@@ -72,7 +72,7 @@ posts.forEach((arrPost) => {
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    ${checkProPic(arrPost.author.image) ? iniziali(arrPost.author.name) : `<img class="profile-pic" src="${arrPost.author.image}" alt="${arrPost.author.name}">`}     
+                    ${checkProPic(arrPost.author.image) ? `<div class="profile-pic-letter">${iniziali(arrPost.author.name)}</div>` : `<img class="profile-pic" src="${arrPost.author.image}" alt="${arrPost.author.name}">`}     
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${arrPost.author.name}</div>
@@ -153,3 +153,5 @@ function iniziali(name) {
     const firstLetter = Name.map(Name => Name.charAt(0));
     return firstLetter.join('')
 };
+
+// BONUS 3 NEL LIKE BUTTON
